@@ -1,70 +1,156 @@
-# Getting Started with Create React App
+Task Management Application
+Overview
+The Task Management Application is a full-stack web application designed to help users manage their tasks efficiently. It includes features like user authentication, task creation, editing, deletion, and status tracking. The application is built using React for the frontend, Node.js with Express for the backend, and PostgreSQL for the database.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Features
+User Authentication: Secure login and registration using JWT (JSON Web Tokens).
 
-## Available Scripts
+Task Management:
 
-In the project directory, you can run:
+Create, Read, Update, and Delete (CRUD) tasks.
 
-### `npm start`
+Track task status (Pending, In Progress, Completed).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Set due dates for tasks.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Responsive Design: Works seamlessly on both desktop and mobile devices.
 
-### `npm test`
+Protected Routes: Ensures only authenticated users can access the task management features.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Technologies Used
+Frontend:
 
-### `npm run build`
+React.js
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Tailwind CSS (for styling)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+React Router (for routing)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Backend:
 
-### `npm run eject`
+Node.js
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Express.js
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+PostgreSQL (database)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+JWT (for authentication)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Other Tools:
 
-## Learn More
+Axios (for API requests)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Bcrypt (for password hashing)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Installation
+Prerequisites
+Node.js and npm installed on your machine.
 
-### Code Splitting
+PostgreSQL database setup.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Steps to Run the Application
+Clone the Repository:
 
-### Analyzing the Bundle Size
+bash
+Copy
+git clone https://github.com/SakibZa/task-management-app.git
+cd task-management-app
+Install Dependencies:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+For the backend:
 
-### Making a Progressive Web App
+bash
+Copy
+cd backend
+npm install
+For the frontend:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+bash
+Copy
+cd ../frontend
+npm install
+Set Up the Database:
 
-### Advanced Configuration
+Create a PostgreSQL database named task_management.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Update the database configuration in the backend .env file:
 
-### Deployment
+plaintext
+Copy
+DB_HOST=localhost
+DB_USER=your_db_username
+DB_PASSWORD=your_db_password
+DB_NAME=task_management
+JWT_SECRET=your_jwt_secret_key
+Run Migrations:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Navigate to the backend directory and run the database migrations:
 
-### `npm run build` fails to minify
+bash
+Copy
+npm run migrate
+Start the Backend Server:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+In the backend directory, start the server:
+
+bash
+Copy
+npm start
+Start the Frontend Development Server:
+
+In the frontend directory, start the React app:
+
+bash
+Copy
+npm start
+Access the Application:
+
+Open your browser and navigate to http://localhost:3000.
+
+Folder Structure
+Copy
+task-management-app/
+├── backend/
+│   ├── controllers/          # Backend controllers
+│   ├── db/                   # Database connection and queries
+│   ├── middleware/           # Authentication middleware
+│   ├── routes/               # API routes
+│   ├── .env                  # Environment variables
+│   ├── server.js             # Backend entry point
+│   └── package.json          # Backend dependencies
+├── frontend/
+│   ├── public/               # Static assets
+│   ├── src/
+│   │   ├── components/       # React components
+│   │   ├── context/          # React context for state management
+│   │   ├── pages/            # Application pages
+│   │   ├── App.js            # Main application component
+│   │   └── index.js          # Frontend entry point
+│   └── package.json          # Frontend dependencies
+├── README.md                 # Project documentation
+└── .gitignore                # Files to ignore in version control
+API Endpoints
+Authentication
+POST /api/user/register: Register a new user.
+
+POST /api/user/login: Log in an existing user.
+
+Tasks
+GET /api/task/allTasks: Fetch all tasks for the authenticated user.
+
+POST /api/task/create: Create a new task.
+
+PUT /api/task/:id: Update an existing task.
+
+DELETE /api/task/:id: Delete a task.
+
+Screenshots
+Home Page
+Home Page
+
+Task Form
+Task Form
+
+Task List
+Task List
+
